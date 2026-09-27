@@ -3,22 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3320",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start -p 3320",
+    "lint": "eslint",
+    "check": "node scripts/check-register.mjs",
+    "capture": "node scripts/capture.mjs",
+    "icons": "node scripts/icons.mjs",
+    "shoot": "node scripts/shoot.mjs",
+    "build:cf": "opennextjs-cloudflare build",
+    "deploy:cf": "opennextjs-cloudflare build && opennextjs-cloudflare deploy && opennextjs-cloudflare populateCache remote && node scripts/verify-cf.mjs https://n8n-nodes-compound-site.kyisaiah47.workers.dev"
   },
   "dependencies": {
+    "@number-flow/react": "^0.6.2",
+    "lenis": "^1.3.26",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
-    "typescript": "^5"
+    "puppeteer-core": "^25.11.0",
+    "typescript": "^5",
+    "wrangler": "^4.136.1"
   }
 }
