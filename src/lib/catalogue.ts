@@ -6,9 +6,9 @@
 
 export const CAPTURED_AT = "2026-10-02" as const;
 
-export const NODE_VERSION = "0.3.5" as const;
+export const NODE_VERSION = "0.4.0" as const;
 
-export const NODE_NAME = "n8n-nodes-compound" as const;
+export const NODE_NAME = "n8n-nodes-parserail" as const;
 
 export const NODE_DISPLAY = "ParseRail" as const;
 
@@ -30,7 +30,7 @@ export const LICENCE = "MIT" as const;
 
 export const HOMEPAGE = "https://parserail.thecompound.tech" as const;
 
-export const REPO = "https://github.com/kyisaiah47/n8n-nodes-compound" as const;
+export const REPO = "https://github.com/kyisaiah47/n8n-nodes-parserail" as const;
 
 export const N8N_BLOCK = {
  "n8nNodesApiVersion": 1,

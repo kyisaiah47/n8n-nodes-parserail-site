@@ -14,7 +14,7 @@ if (!css.includes("#52CAA6") || !css.includes("#67DDB9")) fail("accent register 
 if (!css.includes("estate ring is full")) fail("estate ring note is missing");
 if (/\.status[^}]*var\(--accent\)/i.test(css)) fail("accent is assigned to a status selector");
 const product = read("src/lib/product.ts");
-for (const needed of ["n8n-nodes-compound", "n8n-nodes-compound.thecompound.tech", "0.3.5", "https://github.com/kyisaiah47/n8n-nodes-compound", "SOURCES"]) if (!product.includes(needed)) fail(`product register missing ${needed}`);
+for (const needed of ["n8n-nodes-parserail", "n8n-nodes-compound.thecompound.tech", "0.4.0", "https://github.com/kyisaiah47/n8n-nodes-parserail", "SOURCES"]) if (!product.includes(needed)) fail(`product register missing ${needed}`);
 if (!product.match(/quote:/g)?.length || !product.match(/url:/g)?.length || !product.match(/read_at:/g)?.length) fail("claims lack source rows");
 if (!read("src/components/SmoothScroll.tsx").includes("allowNestedScroll: true") || !read("src/components/SmoothScroll.tsx").includes("lerp: 0.35")) fail("Lenis register is incomplete");
 if (!read("src/app/layout.tsx").includes("thecompound.tech/#organization") || !read("src/app/page.tsx").includes("Built by") || !read("src/app/page.tsx").includes("hello@thecompound.tech") || !read("src/app/page.tsx").includes("A Compound Labs product")) fail("studio credit is incomplete");
