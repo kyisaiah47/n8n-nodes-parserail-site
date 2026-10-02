@@ -1,57 +1,47 @@
 /* THE DEPLOY GATE. A deploy that ships nothing must not exit 0.
  *
- * The shape is the one tools/cloudflare/migrate-product.mjs writes. An early rulestack deploy
- * reported exit 0 while no Worker existed on the account at all, so every later run would have
- * read as a success while the site silently stayed on the old host. This reads the Worker's own
- * routes back over the network and exits non-zero on any status that is not the expected one.
- *
- * Routes are derived from the app router: the page, plus the three files Next serves from
- * src/app. Dynamic segments are skipped, because a real value for one has to come from the
- * product's own data.
+ * n8n-nodes-compound is now a page on ParseRail. Every path on this host answers 308 with the matching
+ * ParseRail page, so each route is checked for the status AND the Location it points to. A static
+ * asset path is in the list because asset requests reach the redirect only through
+ * run_worker_first. The last route carries a query string, because the redirect keeps it.
  */
 const base = (process.argv[2] || '').replace(/\/$/, '');
 if (!base) {
-  console.error('verify-cf: no base url given');
+  console.error('usage: node scripts/verify-cf.mjs <worker-url>');
   process.exit(1);
 }
 
-/* ⛔ DO NOT ASSUME 200 WITHOUT READING IT BACK. agentwire's /reference answers 308 in
- * production and a gate that assumed 200 failed a deploy that was perfectly correct. Every
- * status below is what this Worker is expected to serve, corrected by hand against the first
- * real deploy rather than invented. */
+const PARSERAIL = 'https://parserail.thecompound.tech';
 const ROUTES = [
-  ['/', 200],
-  ['/robots.txt', 200],
-  ['/sitemap.xml', 200],
-  ['/llms.txt', 200],
+  ['/', 308, PARSERAIL + '/docs/n8n'],
+  ['/robots.txt', 308, PARSERAIL + '/robots.txt'],
+  ['/sitemap.xml', 308, PARSERAIL + '/sitemap.xml'],
+  ['/llms.txt', 308, PARSERAIL + '/llms.txt'],
+  ['/favicon.ico', 308, PARSERAIL + '/docs/n8n'],
+  ['/?ref=npm&utm_source=readme', 308, PARSERAIL + '/docs/n8n?ref=npm&utm_source=readme'],
 ];
 
-/* ⛔ RETRY BEFORE FAILING. A route whose page lives in the incremental cache can answer 404 for
- * a few seconds after populateCache returns, because the R2 writes have not settled. Measured
- * on cardchase: every route failed the gate and every one answered 200 by hand a moment later.
- * Six tries over about fifteen seconds covers it, and a deploy that is genuinely broken still
- * fails, just fifteen seconds later. */
-async function tryOnce(path, want) {
+async function tryOnce(path, want, location) {
   try {
     const res = await fetch(base + path, { redirect: 'manual' });
-    return res.status === want;
+    return res.status === want && res.headers.get('location') === location;
   } catch {
     return false;
   }
 }
 
-async function checkRoute(path, want) {
+async function checkRoute(path, want, location) {
   for (let i = 0; i < 6; i++) {
-    if (await tryOnce(path, want)) return true;
+    if (await tryOnce(path, want, location)) return true;
     await new Promise((r) => setTimeout(r, 2500));
   }
   return false;
 }
 
 let failed = 0;
-for (const [path, want] of ROUTES) {
-  const ok = await checkRoute(path, want);
-  console.log(`${ok ? 'ok  ' : 'FAIL'} ${base}${path} (want ${want})`);
+for (const [path, want, location] of ROUTES) {
+  const ok = await checkRoute(path, want, location);
+  console.log(`${ok ? 'ok  ' : 'FAIL'} ${base}${path} (want ${want} to ${location})`);
   if (!ok) failed++;
 }
 if (failed) {
