@@ -3,28 +3,10 @@
   "label": "Open source",
   "apps": [
     {
-      "slug": "deferless-site",
-      "name": "Deferless",
-      "url": "https://deferless.thecompound.tech",
-      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230a0a0a%22%2F%3E%3Cg%20transform%3D%22translate(2.5%202.5)%20scale(0.84375)%22%3E%3Crect%20x%3D%225%22%20y%3D%224%22%20width%3D%226%22%20height%3D%2225%22%20fill%3D%22%2333c9c4%22%20fill-opacity%3D%220.62%22%3E%3C%2Frect%3E%3Crect%20x%3D%2221%22%20y%3D%224%22%20width%3D%226%22%20height%3D%2225%22%20fill%3D%22%2333c9c4%22%20fill-opacity%3D%220.62%22%3E%3C%2Frect%3E%3Crect%20x%3D%221%22%20y%3D%2211%22%20width%3D%2230%22%20height%3D%227%22%20fill%3D%22%2333c9c4%22%3E%3C%2Frect%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-    },
-    {
       "slug": "compound-evals",
       "name": "EvalBench",
       "url": "https://evals.thecompound.tech",
       "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2242%22%20fill%3D%22%231a1a1a%22%2F%3E%3Cg%20transform%3D%22translate(30%2030)%20scale(.75)%22%20shape-rendering%3D%22geometricPrecision%22%3E%3Cpath%20d%3D%22M120%2067%20165.9%2093.5%20120%20120%2074.1%2093.5Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M165.9%20146.5%20120%20173v-53l45.9-26.5Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M74.1%20146.5v-53L120%20120v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m120%2014%2045.9%2026.5L120%2067%2074.1%2040.5Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M165.9%2093.5%20120%20120V67l45.9-26.5Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M74.1%2093.5v-53L120%2067v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m74.1%2093.5%2045.9%2026.5-45.9%2026.5L28.2%20120Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M120%20173%2074.1%20199.5v-53L120%20120Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M28.2%20173v-53l45.9%2026.5v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m165.9%2093.5%2045.9%2026.5-45.9%2026.5L120%20120Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m211.8%20173-45.9%2026.5v-53l45.9-26.5Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M120%20173v-53l45.9%2026.5v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m74.1%2040.5%2045.9%2026.5-45.9%2026.5L28.2%2067Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m120%20120-45.9%2026.5v-53L120%2067Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M28.2%20120V67l45.9%2026.5v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m165.9%2040.5%2045.9%2026.5-45.9%2026.5L120%2067Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m211.8%20120-45.9%2026.5v-53L211.8%2067Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M120%20120V67l45.9%2026.5v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3Cpath%20d%3D%22m120%20120%2045.9%2026.5L120%20173l-45.9-26.5Z%22%20fill%3D%22%231a1a1a%22%2F%3E%3Cpath%20d%3D%22M165.9%20199.5%20120%20226v-53l45.9-26.5Z%22%20fill%3D%22%23d8d8d8%22%2F%3E%3Cpath%20d%3D%22M74.1%20199.5v-53L120%20173v53Z%22%20fill%3D%22%23b0b0b0%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-    },
-    {
-      "slug": "glanceless-site",
-      "name": "glanceless",
-      "url": "https://glanceless.thecompound.tech",
-      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230a0a0a%22%2F%3E%3Cg%20transform%3D%22translate(2.5%202.5)%20scale(0.84375)%22%3E%3Cpath%20d%3D%22M3%203%20H21%20V21%20H3%20Z%20M7%207%20V17%20H17%20V7%20Z%22%20fill-rule%3D%22evenodd%22%20fill%3D%22%23cd9ae6%22%20fill-opacity%3D%220.62%22%3E%3C%2Fpath%3E%3Crect%20x%3D%2210%22%20y%3D%2210%22%20width%3D%224%22%20height%3D%224%22%20fill%3D%22%23cd9ae6%22%3E%3C%2Frect%3E%3Cpolygon%20points%3D%2218%2C21%2021%2C18%2029%2C26%2026%2C29%22%20fill%3D%22%23cd9ae6%22%3E%3C%2Fpolygon%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-    },
-    {
-      "slug": "leakless-site",
-      "name": "Leakless",
-      "url": "https://leakless.thecompound.tech",
-      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230a0a0a%22%2F%3E%3Cg%20transform%3D%22translate(2.5%202.5)%20scale(0.84375)%22%3E%3Cpath%20d%3D%22M9%2014%20V10%20A7%207%200%200%201%2023%2010%20V14%20H19%20V10%20A3%203%200%200%200%2013%2010%20V14%20Z%22%20fill%3D%22%23c8b14f%22%20fill-opacity%3D%220.62%22%3E%3C%2Fpath%3E%3Crect%20x%3D%225%22%20y%3D%2214%22%20width%3D%2222%22%20height%3D%2215%22%20fill%3D%22%23c8b14f%22%3E%3C%2Frect%3E%3C%2Fg%3E%3C%2Fsvg%3E"
     },
     {
       "slug": "n8n-nodes-compound-site",
@@ -45,10 +27,10 @@
       "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%230b0d0d%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2212%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%2382C57E%22%2F%3E%3Cpath%20d%3D%22M24%2020h10c8%200%2012%204%2012%2010s-4%2010-12%2010h-4v5h-6V20Zm6%206v8h4c4%200%206-1%206-4s-2-4-6-4h-4Z%22%20fill%3D%22%23102313%22%2F%3E%3C%2Fsvg%3E"
     },
     {
-      "slug": "stubless-site",
-      "name": "Stubless",
-      "url": "https://stubless.thecompound.tech",
-      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230a0a0a%22%2F%3E%3Cg%20transform%3D%22translate(2.5%202.5)%20scale(0.84375)%22%3E%3Cpolygon%20points%3D%225%2C2%2021%2C2%2027%2C8%2027%2C30%205%2C30%22%20fill%3D%22%236fb8f9%22%20fill-opacity%3D%220.34%22%3E%3C%2Fpolygon%3E%3Crect%20x%3D%229%22%20y%3D%2211%22%20width%3D%2214%22%20height%3D%225%22%20fill%3D%22%236fb8f9%22%3E%3C%2Frect%3E%3Crect%20x%3D%229%22%20y%3D%2220%22%20width%3D%229%22%20height%3D%225%22%20fill%3D%22%236fb8f9%22%3E%3C%2Frect%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+      "slug": "shipprobe-site",
+      "name": "ShipProbe",
+      "url": "https://shipprobe.thecompound.tech",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20role%3D%22img%22%20aria-label%3D%22ShipProbe%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230F1110%22%2F%3E%3Cpath%20d%3D%22M5.5%2012.5h21%22%20stroke%3D%22%23F2CF24%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M16%205.5v14.5%22%20stroke%3D%22%23ECEEE8%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13.7%2020.2h4.6l1.5%205.6a1%201%200%200%201-1%201.3h-5.6a1%201%200%200%201-1-1.3z%22%20fill%3D%22%23ECEEE8%22%2F%3E%3C%2Fsvg%3E"
     },
     {
       "slug": "compound-gemini-extension-site",
