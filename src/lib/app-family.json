@@ -27,12 +27,6 @@
       "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%230b0d0d%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2212%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%2382C57E%22%2F%3E%3Cpath%20d%3D%22M24%2020h10c8%200%2012%204%2012%2010s-4%2010-12%2010h-4v5h-6V20Zm6%206v8h4c4%200%206-1%206-4s-2-4-6-4h-4Z%22%20fill%3D%22%23102313%22%2F%3E%3C%2Fsvg%3E"
     },
     {
-      "slug": "shipprobe-site",
-      "name": "ShipProbe",
-      "url": "https://shipprobe.thecompound.tech",
-      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20role%3D%22img%22%20aria-label%3D%22ShipProbe%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230F1110%22%2F%3E%3Cpath%20d%3D%22M5.5%2012.5h21%22%20stroke%3D%22%23F2CF24%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M16%205.5v14.5%22%20stroke%3D%22%23ECEEE8%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13.7%2020.2h4.6l1.5%205.6a1%201%200%200%201-1%201.3h-5.6a1%201%200%200%201-1-1.3z%22%20fill%3D%22%23ECEEE8%22%2F%3E%3C%2Fsvg%3E"
-    },
-    {
       "slug": "compound-gemini-extension-site",
       "name": "parserail-gemini-extension",
       "url": "https://compound-gemini-extension.thecompound.tech",
