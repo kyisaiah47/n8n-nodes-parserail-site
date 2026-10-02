@@ -182,7 +182,7 @@ writeFileSync(
     ` * Prices, groups, units, throttles and the pause: ${RAIL}/src/lib/platform/constants.ts\n` +
     ` * Captured ${out.CAPTURED_AT}.\n */\n\n` +
     Object.entries(out)
-      .map(([k, v]) => `export const ${k} = ${JSON.stringify(v, null, 1)} as const;`)
+      .map(([k, v]) => `export const ${k} = ${JSON.stringify(v, null, 1).replace(/[\u2013\u2014\u2212]/g, ',')} as const;`)
       .join('\n\n') +
     '\n',
 );

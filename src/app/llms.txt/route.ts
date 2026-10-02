@@ -1,0 +1,2 @@
+import { PRODUCT, SOURCES } from "@/lib/product";
+export function GET() { return new Response(`# ${PRODUCT.name}\n\n${PRODUCT.displayName} is the n8n community node described by the package README and source.\n\n- Site: https://${PRODUCT.host}/\n- Repository: ${PRODUCT.repoUrl}\n- Documentation: ${PRODUCT.docsUrl}\n\n## Sources\n${SOURCES.map((source) => `- ${source.quote} (${source.url})`).join("\n")}\n`, { headers: { "content-type": "text/plain; charset=utf-8" } }); }

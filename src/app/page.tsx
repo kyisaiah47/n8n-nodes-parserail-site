@@ -1,69 +1,28 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useMemo, useState } from "react";
+import NumberFlow from "@number-flow/react";
+import { OPERATIONS, GROUPS, NODE_VERSION, CREDENTIAL } from "@/lib/catalogue";
+import { PRODUCT, SOURCES } from "@/lib/product";
+
+function Icon({ name }: { name: string }) { return <span className="icon" aria-hidden="true" data-icon={name} />; }
+const groupIcons: Record<string, string> = { documents: "file-text", extract: "brackets-curly", commerce: "shopping-cart", communication: "chat-teardrop-text", content: "shield-check", web: "globe-hemisphere-west", media: "robot" };
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  const [query, setQuery] = useState("");
+  const [group, setGroup] = useState("all");
+  const filtered = useMemo(() => OPERATIONS.filter((op) => {
+    const needle = query.trim().toLowerCase();
+    return (group === "all" || op.group === group) && (!needle || `${op.name} ${op.blurb} ${op.unit}`.toLowerCase().includes(needle));
+  }), [group, query]);
+  return <div className="site-shell">
+    <header className="masthead"><a className="brand" href="#top" aria-label="n8n-nodes-compound home"><span className="brand-mark">n8n</span><span className="brand-name">n8n-nodes-compound</span></a><nav className="nav-links" aria-label="Primary navigation"><a href="#operations">Operations</a><a href="#install">Install</a><a href={PRODUCT.repoUrl} target="_blank" rel="noreferrer">GitHub <Icon name="arrow-square-out" /></a></nav></header>
+    <main id="top">
+      <section className="hero frame-section"><div className="hero-copy"><p className="eyebrow"><span className="activity-dot" /> n8n community node / ParseRail</p><h1>AI operations<br /><em>inside the workflow.</em></h1><p className="hero-lede">The ParseRail node exposes each API endpoint as an operation. Documents, extraction, triage, research, moderation, and agent memory share one credential.</p><div className="hero-actions"><a className="button button-accent" href="#operations">Browse operations <Icon name="caret-right" /></a><a className="button button-quiet" href="#install">Install node <Icon name="terminal-window" /></a></div></div><div className="hero-card" aria-label="Node facts"><div className="node-window-top"><span>PARSE RAIL</span><span className="node-state">READY</span></div><div className="node-orbit"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="node-core">PR</div><span className="orbit-label label-a">input</span><span className="orbit-label label-b">route</span><span className="orbit-label label-c">JSON</span></div><div className="node-window-bottom"><span>usableAsTool: true</span><span>v{NODE_VERSION}</span></div></div></section>
+      <section className="facts-band frame-section"><div><span className="fact-label">PACKAGE</span><strong>{PRODUCT.name}</strong></div><div><span className="fact-label">NODE</span><strong>ParseRail</strong></div><div><span className="fact-label">CREDENTIAL</span><strong>{CREDENTIAL.displayName}</strong></div><div><span className="fact-label">LICENSE</span><strong>MIT</strong></div></section>
+      <section className="operations-section frame-section" id="operations"><div className="section-heading"><div><p className="eyebrow">01 / Operation surface</p><h2>Every route in the node.</h2></div><p className="section-note">The operation list is generated from the node description. Prices come from the task catalog.</p></div><div className="operation-tools"><label className="search-box"><span className="sr-only">Filter operations</span><Icon name="list-magnifying-glass" /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Filter operations" /></label><div className="result-count"><NumberFlow value={filtered.length} /> <span>of {OPERATIONS.length} shown</span></div></div><div className="group-tabs" role="tablist" aria-label="Operation groups"><button className={group === "all" ? "active" : ""} onClick={() => setGroup("all")}>All operations</button>{GROUPS.map((item) => <button key={item.key} className={group === item.key ? "active" : ""} onClick={() => setGroup(item.key)}><Icon name={groupIcons[item.key]} />{item.title}</button>)}</div><div className="operation-table" role="table" aria-label="ParseRail operations"><div className="table-head" role="row"><span>Operation</span><span>What it returns</span><span>Unit price</span><span>Route</span></div>{filtered.map((op, index) => <div className="operation-row" role="row" key={op.value}><span className="op-name"><span className="op-index">{String(index + 1).padStart(2, "0")}</span><strong>{op.name}</strong></span><span className="op-blurb">{op.blurb}</span><span className="op-price"><Icon name="coins" /> {op.credits} credit{Number(op.credits) === 1 ? "" : "s"}</span><span className="op-route">{op.path}</span></div>)}</div></section>
+      <section className="install-section frame-section" id="install"><div className="section-heading"><div><p className="eyebrow">02 / Put it in n8n</p><h2>One package. One key.</h2></div><p className="section-note">The node uses a ParseRail API credential. It is verified against the account endpoint when saved.</p></div><div className="install-grid"><div className="install-card"><div className="card-label"><Icon name="terminal-window" /> Install</div><pre><code>n8n-nodes-compound</code><button aria-label="Copy package name"><Icon name="copy" /></button></pre><p>Follow the n8n community nodes installation guide, then search for the package name in your node settings.</p><a href={PRODUCT.installUrl} target="_blank" rel="noreferrer">Open n8n installation guide <Icon name="arrow-square-out" /></a></div><div className="install-card"><div className="card-label"><Icon name="key" /> Credential</div><div className="credential-row"><span>ParseRail API</span><span className="verified"><Icon name="seal-check" /> bearer token</span></div><p>Create a ParseRail account, mint an API key, and add a ParseRail API credential in n8n.</p><a href={PRODUCT.docsUrl} target="_blank" rel="noreferrer">Read ParseRail docs <Icon name="arrow-square-out" /></a></div></div><div className="compatibility-line"><span><Icon name="check" /> n8n version 1.0 or later</span><span><Icon name="check" /> no runtime dependencies beyond n8n-workflow</span><span><Icon name="check" /> usable as an AI Agent tool</span></div></section>
+      <section className="evidence-section frame-section" id="evidence"><div className="section-heading"><div><p className="eyebrow">03 / Source register</p><h2>Read the package.</h2></div><p className="section-note">Every sentence on this page is grounded in the package, its source, or its live repository.</p></div><div className="source-list">{SOURCES.map((source, index) => <a className="source-row" href={source.url} target="_blank" rel="noreferrer" key={`${source.url}-${index}`}><span className="source-num">{String(index + 1).padStart(2, "0")}</span><span className="source-quote">“{source.quote}”</span><span className="source-meta">{source.cite}<br />read {source.read_at}</span><Icon name="arrow-square-out" /></a>)}</div></section>
+    </main>
+    <footer className="footer frame-section"><div className="footer-top"><span className="footer-product">n8n-nodes-compound</span><a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a><span>MIT licensed</span></div><div className="footer-bottom"><span>Built by <img className="studio-credit-mark" src="/brand/compound-labs.svg" alt="Compound Labs" width={80} height={20} /></span><span>© 2026 n8n-nodes-compound. A Compound Labs product.</span><a href="#top">Back to top <Icon name="caret-right" /></a></div></footer>
+  </div>;
 }

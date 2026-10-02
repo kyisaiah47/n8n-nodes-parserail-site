@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": "cf-worker.mjs",
+  "name": "n8n-nodes-compound",
+  "workers_dev": true,
+  "compatibility_date": "2025-09-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
+  "kv_namespaces": [{ "binding": "BUDGET", "id": "a32d936516a64671b80444e298cc48d7" }],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "r2_buckets": [
+    { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "n8n-nodes-compound-isr" }
+  ],
+  "routes": [
+    { "pattern": "n8n-nodes-compound.thecompound.tech", "custom_domain": true }
+  ]
+}
